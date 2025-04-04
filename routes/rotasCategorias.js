@@ -1,17 +1,18 @@
 const { Router } = require('express');
+const {
+    getCategorias,
+    addCategoria,
+    updateCategoria,
+    deleteCategoria,
+    getCategoriaPorCodigo
+} = require('../controllers/categoriaController');
 
-const { getCategorias, addCategoria, updateCategoria, 
-    deleteCategoria, getCategoriaPorCodigo } = require('../controllers/categoriaController');
+const router = Router();
 
-const rotasCategorias = new Router();
+router.get('/', getCategorias);
+router.post('/', addCategoria);
+router.put('/:codigo', updateCategoria);
+router.delete('/:codigo', deleteCategoria);
+router.get('/:codigo', getCategoriaPorCodigo);
 
-rotasCategorias.route('/categoria')
-               .get(getCategorias)
-               .post(addCategoria)
-               .put(updateCategoria)
-
-rotasCategorias.route('/categoria/:codigo')
-               .get(getCategoriaPorCodigo)
-               .delete(deleteCategoria)
-
-module.exports = { rotasCategorias }
+module.exports = router;
