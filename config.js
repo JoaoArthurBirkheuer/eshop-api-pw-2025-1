@@ -1,5 +1,5 @@
 const { Pool } = require('pg')
-
+// change password when necessary
 const isProduction = process.env.NODE_ENV === 'production'
 
 let pool = null;
