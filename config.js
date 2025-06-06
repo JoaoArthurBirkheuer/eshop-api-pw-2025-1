@@ -1,5 +1,5 @@
 const { Pool } = require('pg')
-// change password when necessary
+
 const isProduction = process.env.NODE_ENV === 'production'
 
 let pool = null;
@@ -14,7 +14,7 @@ if (isProduction) {
     user: 'postgres',
     host: 'localhost',
     database: 'eshoppw',
-    password: 'jb12',
+    password: 'in123put',
     port: 5432
   })
 }

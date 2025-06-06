@@ -1,18 +1,17 @@
 const { Router } = require('express');
-const {
-    getProdutos,
-    addProduto,
-    updateProduto,
-    deleteProduto,
-    getProdutoPorCodigo
-} = require('../controllers/produtoController');
 
-const router = Router();
+const { getProdutos, addProduto, updateProduto,
+    deleteProduto, getProdutoPorCodigo } = require('../controllers/produtoController');
 
-router.get('/', getProdutos);
-router.post('/', addProduto);
-router.put('/:codigo', updateProduto);
-router.delete('/:codigo', deleteProduto);
-router.get('/:codigo', getProdutoPorCodigo);
+const rotasProdutos = new Router();
 
-module.exports = router;
+rotasProdutos.route('/produto')
+               .get(getProdutos)
+               .post(addProduto)
+               .put(updateProduto)
+
+rotasProdutos.route('/produto/:codigo')
+               .get(getProdutoPorCodigo)
+               .delete(deleteProduto)
+
+module.exports = { rotasProdutos }
